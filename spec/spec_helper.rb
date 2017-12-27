@@ -9,7 +9,7 @@ RSpec.configure do |config|
   config.filter_run :focus
 
   # Explicitly enable deprecated ':should' syntax.
-  # FIXME: Refactor tests to use ':expect' syntact instead.
+  # FIXME: Refactor tests to use ':expect' syntaxt instead.
   config.expect_with(:rspec) { |c| c.syntax = :should }
 
   # Run specs in random order to surface order dependencies. If you find an
@@ -19,4 +19,4 @@ RSpec.configure do |config|
   config.order = 'random'
 end
 
-require 'dices'
+require 'dice'

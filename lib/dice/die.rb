@@ -1,4 +1,4 @@
-class Dice
+class Die
   attr_reader :sides
 
   def initialize(sides=nil)
@@ -14,9 +14,9 @@ class Dice
       raise TypeError, "Cannot convert '#{sides.class}' to 'Array'"
     end
   end
-  
+
   def roll
-    @@random ||= Random.new    
+    @@random ||= Random.new
     @sides[@@random.rand(0...sides.count)]
   end
 end

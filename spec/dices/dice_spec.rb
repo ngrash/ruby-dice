@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe Dice do 
+describe Dice do
   it 'can optionally set sides in initializer' do
     dice = Dice.new [1, 2, 3]
     dice.sides.should eq [1, 2, 3]
   end
-  
+
   it 'converts sides set in initializer' do
     dice = Dice.new 1..20
     dice.sides.should eq (1..20).to_a
@@ -17,34 +17,34 @@ describe Dice do
       dice.sides = 1..20
       dice.sides.should eq (1..20).to_a
     end
-    
+
     it 'converts from Fixnum' do
       dice = Dice.new
       dice.sides = 20
       dice.sides.should eq (1..20).to_a
     end
-    
+
     it 'converts using to_a' do
       obj = Object.new
-      expect(obj).to receive(:to_a) { (1..20).to_a }
-      
+      obj.should receive(:to_a) { (1..20).to_a }
+
       dice = Dice.new
       dice.sides = obj
       dice.sides.should eq (1..20).to_a
     end
-    
+
     it 'raises error for unconvertible object' do
       obj = Object.new
       dice = Dice.new
-      expect { dice.sides = obj }.to raise_error TypeError
+      lambda { dice.sides = obj }.should raise_error TypeError
     end
-  
+
     it 'sets sides' do
       dice = Dice.new
       dice.sides = (1..20).to_a
-      dice.sides.should eq (1..20).to_a 
+      dice.sides.should eq (1..20).to_a
     end
-  
+
     it 'defaults to six sides' do
       dice = Dice.new
       dice.sides.should eq (1..6).to_a
@@ -58,7 +58,7 @@ describe Dice do
         (1..6).should include dice.roll
       end
     end
-    
+
     it 'returns random value' do
       dice = Dice.new
       results = []

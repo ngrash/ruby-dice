@@ -8,7 +8,7 @@ class Die
   def sides=(sides)
     if sides.respond_to? :to_a
       @sides = sides.to_a
-    elsif sides.is_a? Fixnum
+    elsif sides.is_a? Integer
       @sides = (1..sides).to_a
     else
       raise TypeError, "Cannot convert '#{sides.class}' to 'Array'"
